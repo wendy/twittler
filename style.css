@@ -29,8 +29,7 @@
 }
 
 .timeline {
-  display: ;
   width: 100%;
-  border: 1px solid #C0C0C0;
-  border-radius: 5px;
+  margin: auto;
+  border-top: 1px solid #C0C0C0;
 }

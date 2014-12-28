@@ -23,24 +23,26 @@ $(document).ready(function(){
     streamTweets(tweetsShown);
   });
 
-  //test
+  //timeline function
   var indivTweets = function(user) {
     $timeline.empty();
     var index = streams.users[user].length - 1;
     while (index >= 0) {
       var tweet = streams.users[user][index];
       var $tweet = $('<div class ="indivtwt"></div>');
-      $tweet.append(tweet.created_at + "\n" + tweet.message);
+      $tweet.append(moment(tweet.created_at).format("h:mm a") + "\n" + tweet.message);
       $tweet.appendTo($timeline);
       index -= 1;
     }
   };
+
+  //Click tweet for timeline for that user
   $container.on('click', '.twt', function() {
     var username = $(this).find('.twtusr').text();
     indivTweets(username);
 
-    $(this).after($timeline);
-    $timeline.slidetoggle('slow');
+    $(this).find('.twtmsg').after($timeline);
+
 
     // $(this).find('.twtusr')
   })
