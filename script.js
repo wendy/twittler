@@ -1,12 +1,13 @@
 $(document).ready(function(){
   var $container = $('.container');
+  var $timeline = $('.timeline');
 
   var streamTweets = function(i) {
     var index = streams.home.length - 1;
     while(i <= index){
       var tweet = streams.home[i];
       var $tweet = $('<div class="twt"></div>');
-      $tweet.append("<span class='twtusr'>" + i + '  @' + tweet.user + "</span>" +
+      $tweet.append(i + '  @' + "<span class='twtusr'>" + tweet.user + "</span>" +
         "<span class='date'>" + " - " + moment(tweet.created_at).fromNow() + "</span>"  + 
         "<p class='twtmsg'>" + tweet.message + "</p>");
       $tweet.prependTo($container);
@@ -22,19 +23,34 @@ $(document).ready(function(){
     streamTweets(tweetsShown);
   });
 
-  //Highlight hovered tweet
-  $('.twt').mouseenter(function() {
-    $(this).addClass('hoveredtwt');
-  });
+  //test
+  var indivTweets = function(user) {
+    $timeline.empty();
+    var index = streams.users[user].length - 1;
+    while (index >= 0) {
+      var tweet = streams.users[user][index];
+      var $tweet = $('<div class ="indivtwt"></div>');
+      $tweet.append(tweet.created_at + "\n" + tweet.message);
+      $tweet.appendTo($timeline);
+      index -= 1;
+    }
+  };
+  $container.on('click', '.twt', function() {
+    var username = $(this).find('.twtusr').text();
+    indivTweets(username);
 
-  $('.twt').mouseleave(function() {
-    $(this).removeClass('hoveredtwt');
-  });
-  
+    $(this).after($timeline);
+    $timeline.slidetoggle('slow');
+
+    // $(this).find('.twtusr')
+  })
   //Click User Name for more tweets from thats user
-  $('.twtusr').click(function() {
+  // $container.on('click', '.twtusr', function(){
+  //   var username = $(this).text();
+  //   indivTweets(username);
+  // });
 
-  });
+
 });
 
 

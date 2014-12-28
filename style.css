@@ -1,7 +1,4 @@
 .twt {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
   border: 1px solid #C0C0C0;
   border-radius: 5px;
   margin-top: 2px;
@@ -23,4 +20,17 @@
   display: block;
   margin: auto;
   width: 50%;
+}
+
+.container {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+.timeline {
+  display: ;
+  width: 100%;
+  border: 1px solid #C0C0C0;
+  border-radius: 5px;
 }
