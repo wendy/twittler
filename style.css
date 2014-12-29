@@ -1,13 +1,48 @@
-.twt {
-  margin-left: auto;
-  margin-right: auto;
+.topheader {
+  height: 100px;
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+/*outer page look */
+.middlepage {
   width: 50%;
-  border: 1px solid #C0C0C0;
+  margin: auto;
+  font-family: Helvetica, Arial, Sans-Serif;
+}
+
+.twtheader {
+  width: ;
+  height: 63px;
+  border: 1px solid #e1e8ed;
+  border-top-radius: 5px;
+  margin-top: 2px;
+}
+
+.refresh {
+  text-align: center;
+  display: block;
+  margin: auto;
+  height: 40px;
+  border: 1px solid #e1e8ed;
+  background-color: #fdfdfd;
+}
+
+.twt {
+  border: 1px solid #e1e8ed;
   border-radius: 5px;
   margin-top: 2px;
 }
+
+
+/*tweet look*/
+.refresh:hover {
+  background-color: #f5f8fa;
+}
+
 .twt:hover {
-  background-color: #FDFDFD;
+  background-color: #f5f8fa;
 }
 .twtusr {
   font-family: Proxima Nova, Arial, Sans-Serif;
@@ -19,8 +54,4 @@
   margin: 5px 10px 10px;
 }
 
-.refresh {
-  display: block;
-  margin: auto;
-  width: 50%;
-}
+

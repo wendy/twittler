@@ -16,19 +16,23 @@ $(document).ready(function(){
   
   streamTweets(0);
 
+  //Input guest's tweet
+  streams.users.guest = [];
+  $('button').click(function(e) {
+    e.preventDefault();
+    var message = $("input[name=message]").val();
+    var tweet = {};
+    tweet.user = "guest";
+    tweet.message = message;
+    tweet.created_at = new Date();
+    addTweet(tweet);
+  });
+
+
   //Refresh Button - appends new tweets to $container
   $('.refresh').click(function() {
     var tweetsShown = $('.twt').length;
     streamTweets(tweetsShown);
-  });
-
-  //Highlight hovered tweet
-  $('.twt').mouseenter(function() {
-    $(this).addClass('hoveredtwt');
-  });
-
-  $('.twt').mouseleave(function() {
-    $(this).removeClass('hoveredtwt');
   });
   
   //Click User Name for more tweets from thats user
