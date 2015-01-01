@@ -3,13 +3,21 @@
   width: 100%;
   display: block;
   border-bottom: 1px solid #e1e8ed;
+  
+}
+
+body {
+  background-image: url(bg.png);
 }
 
 /*middle page look */
 .middlepage {
-  width: 50%;
+  background-color: #FFF;
+  width: 60%;
   margin: auto;
   font-family: Helvetica, Arial, Sans-Serif;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .twtheader {
