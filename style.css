@@ -1,44 +1,52 @@
-.topheader {
-  height: 100px;
-  width: 100%;
-  display: block;
-  border-bottom: 1px solid #e1e8ed;
-  
-}
-
 body {
   background-image: url(bg.png);
 }
 
 /*middle page look */
 .middlepage {
-  background-color: #FFF;
-  width: 60%;
+  width: 50%;
   margin: auto;
+  margin-top: 40px;
   font-family: Helvetica, Arial, Sans-Serif;
-  padding: 20px;
-  border-radius: 10px;
 }
 
 .twtheader {
-  width: ;
+  width: 100%;
   height: 63px;
   border: 1px solid #e1e8ed;
   border-top-radius: 5px;
   margin-top: 2px;
 }
 
+.guestmsg {
+  height: 57px; 
+  width: 99%;
+  white-space: pre-wrap; 
+  z-index: auto; 
+  position: relative; 
+  line-height: 18px; 
+  font-size: 14px; 
+  -webkit-transition: none; 
+  transition: none; 
+  overflow: hidden; 
+  background: #fff;
+}
+
 .refresh {
   text-align: center;
   display: block;
   margin: auto;
+  width: 100%;
   height: 40px;
   border: 1px solid #e1e8ed;
   background-color: #fdfdfd;
 }
 
 .twt {
+  width: 100%;
   border: 1px solid #e1e8ed;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 .timeline {
@@ -54,14 +62,19 @@ body {
 .twt:hover {
   background-color: #f5f8fa;
 }
-.twtusr {
+
+.twtusrdate {
   font-family: Proxima Nova, Arial, Sans-Serif;
-  margin: 5px 5px;
+  margin: 10px 5px;
+}
+
+.date {
+  float: right;
 }
 
 .twtmsg {
   font-family: Gotham, Arial, Sans-Serif;
-  margin: 5px 10px 10px;
+  margin: 8px 20px 13px;
 }
 
 

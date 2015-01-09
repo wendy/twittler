@@ -1,39 +1,56 @@
 $(document).ready(function(){
   var $container = $('.container');
   var $timeline = $('.timeline');
-
+  
+  //Append tweets to container Function
   var streamTweets = function(i) {
     var index = streams.home.length - 1;
     while(i <= index){
       var tweet = streams.home[i];
       var $tweet = $('<div class="twt"></div>');
-      $tweet.append(i + '  @' + "<span class='twtusr'>" + tweet.user + "</span>" +
-        "<span class='date'>" + " - " + moment(tweet.created_at).fromNow() + "</span>"  + 
+      $tweet.append("<span class='twtusrdate'>" + '@' + "<span class='twtusr'>" + tweet.user + "</span>" +
+        "<span class='date'>" + moment(tweet.created_at).fromNow() + "</span>" + "</span>" + 
         "<p class='twtmsg'>" + tweet.message + "</p>");
       $tweet.prependTo($container);
+      $tweet.fadeIn('slow');
       i += 1;
     }
   };
   
   streamTweets(0);
 
-  //Input guest's tweet
-  streams.users.guest = [];
-  $('button').click(function(e) {
-    e.preventDefault();
-    var message = $("input[name=message]").val();
-    var tweet = {};
-    tweet.user = "guest";
-    tweet.message = message;
-    tweet.created_at = new Date();
-    addTweet(tweet);
-  });
-
-
-  //Refresh Button - appends new tweets to $container
-  $('.refresh').click(function() {
+  //Refresh Function - appends new tweets to container
+  var refreshTwts = function() {
     var tweetsShown = $('.twt').length;
     streamTweets(tweetsShown);
+  }
+
+  //Auto Refresh 
+  window.setInterval(function() {
+    refreshTwts();
+  }, 10000)
+
+  //Refresh Button
+  $('.refresh').click(function() {
+    refreshTwts();
+  });
+
+  //Input guest's tweet
+  streams.users.guest = [];
+  var $guestMsg = $(".guestmsg");
+  $guestMsg.on('keypress',function(e) {
+    if(e.keyCode == 13){
+      e.preventDefault();
+      var message = $(".guestmsg").val();
+      var tweet = {};
+      tweet.user = "guest";
+      tweet.message = message;
+      tweet.created_at = new Date();
+      addTweet(tweet);
+
+      refreshTwts();
+      $guestMsg.val('');
+    }
   });
 
   //timeline function
