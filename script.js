@@ -11,6 +11,7 @@ $(document).ready(function(){
       $tweet.append("<span class='twtusrdate'>" + '@' + "<span class='twtusr'>" + tweet.user + "</span>" +
         "<span class='date'>" + moment(tweet.created_at).fromNow() + "</span>" + "</span>" + 
         "<p class='twtmsg'>" + tweet.message + "</p>");
+      $tweet.data('time', tweet.created_at);
       $tweet.prependTo($container);
       $tweet.fadeIn('slow');
       i += 1;
@@ -19,11 +20,15 @@ $(document).ready(function(){
   
   streamTweets(0);
 
-  //Refresh Function - appends new tweets to container
+  //Refresh Function - appends new tweets to container & updates time 
   var refreshTwts = function() {
-    var tweetsShown = $('.twt').length;
-    streamTweets(tweetsShown);
-  }
+    var tweetsShown = $('.twt');
+    for(var i = 0; i < tweetsShown.length; i++) {
+      var $tweet = $(tweetsShown[i]); 
+      $tweet.find('.date').text(moment($tweet.data('time')).fromNow());
+    }
+    streamTweets(tweetsShown.length);
+  };
 
   //Auto Refresh 
   window.setInterval(function() {
